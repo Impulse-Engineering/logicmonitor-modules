@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed  version="1.0" hasPendingRequests="false" >
+  <company></company>
+  <status>200</status>
+  <errmsg>OK</errmsg>
+  <interval>0</interval>
+    <entry type="preeventsource">
+        <version>1579639768</version>
+        <name>bwSipPeerConnectionFailure</name>
+        <description>The SIP connection with the peer Application Server is down</description>
+        <group>ClearStar</group>
+        <alertlevel>4</alertlevel>
+        <appliesto>system.displayname == &#34;LABAS1&#34; or system.displayname == &#34;LABAS2&#34; or system.displayname == &#34;AS1&#34; or system.displayname == &#34;AS2&#34;</appliesto>
+        <collector>snmptrap</collector>
+        <alertsubjecttemplate>AS bwSipPeerConnectionFailure</alertsubjecttemplate>
+        <alertbodytemplate>The SIP connection with the peer Application Server is down</alertbodytemplate>
+        <alerteffectiveival>900</alerteffectiveival>
+        <clearafterack>false</clearafterack>
+        <suppressduplicates>true</suppressduplicates>
+        <tags></tags>
+        <technology>BW-ExecutionFault::bwSipPeerConnectionFailure</technology>
+        <doMapping>true</doMapping>
+        <schemaVersion>3</schemaVersion>
+        <params>
+        </params>
+        <filters>
+        <preeventsourcefilter>
+            <name>trapOid</name>
+            <value>1.3.6.1.4.1.6431.1.1.1.3713</value>
+            <comment>@severity:high
+@subcomponent:callp</comment>
+            <op>Contain</op>
+        </preeventsourcefilter>
+        </filters>
+        <scripts>
+        </scripts>
+    </entry>
+</feed>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed  version="1.0" hasPendingRequests="false" >
+  <company></company>
+  <status>200</status>
+  <errmsg>OK</errmsg>
+  <interval>0</interval>
+    <entry type="predatasource">
+        <version>1452708614</version>
+        <name>BroadWorksAS_MeetMe_ConfStats</name>
+        <displayedas>BroadWorksAS_MeetMe_ConfStats-</displayedas>
+        <description>Per BW Group statistics for MeetMe users</description>
+        <collector>snmp</collector>
+        <hasMultiInstances>true</hasMultiInstances>
+        <schedule>300</schedule>
+        <appliesTo>system.displayname == &#34;LABAS2&#34; or system.displayname == &#34;LABAS1&#34; or system.displayname == &#34;AS2&#34; or system.displayname == &#34;AS1&#34;</appliesTo>
+        <wildcardauto>true</wildcardauto>
+        <wildcardpersist>false</wildcardpersist>
+        <wildcardlinuxscript>ad_snmp</wildcardlinuxscript>
+        <wildcardlinuxcmdline> type=&#34;value&#34; oid=&#34;.1.3.6.1.4.1.6431.1.2.11.89.14.1.1&#34;  descOid=&#34;.1.3.6.1.4.1.6431.1.2.11.89.14.1.2&#34; oid2=&#34;&#34;  </wildcardlinuxcmdline>
+        <wildcardwinscript>ad_snmp</wildcardwinscript>
+        <wildcardwincmdline> type=&#34;value&#34; oid=&#34;.1.3.6.1.4.1.6431.1.2.11.89.14.1.1&#34;  descOid=&#34;.1.3.6.1.4.1.6431.1.2.11.89.14.1.2&#34; oid2=&#34;&#34;  </wildcardwincmdline>
+        <wildcardgroovyscript></wildcardgroovyscript>
+        <wildcardschedule>1440</wildcardschedule>
+        <wildcarddisable>false</wildcarddisable>
+        <wildcarddeleteinactive>false</wildcarddeleteinactive>
+        <agdmethod>none</agdmethod>
+        <agdparams></agdparams>
+        <group>ClearStar</group>
+        <tags></tags>
+        <technology></technology>
+        <adlist><![CDATA[{"agdmethod":"none","method":"ad_snmp","agdparams":"","id":0,"filters":[],"params":{"descOid":".1.3.6.1.4.1.6431.1.2.11.89.14.1.2","oid":".1.3.6.1.4.1.6431.1.2.11.89.14.1.1","oid2":"","type":"value"}}]]></adlist>
+        <schemaVersion>2</schemaVersion>
+        <dataSourceType>1</dataSourceType>
+        <attributes>
+        <attribute>
+            <name>ip</name>
+            <value>dns</value>
+            <comment></comment>
+        </attribute>
+        </attributes>
+        <datapoints>
+        <datapoint>
+            <name>bwMeetMeGroupNumActiveConferences</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam></postprocessorparam>
+            <usevalue></usevalue>
+            <alertexpr></alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject></alertsubject>
+            <alertbody></alertbody>
+            <enableanomalyalertsuppression></enableanomalyalertsuppression>
+            <description>This is the number of conferences that are currently active.</description>
+            <maxvalue></maxvalue>
+            <minvalue>0</minvalue>
+            <userparam1>.1.3.6.1.4.1.6431.1.2.11.89.14.1.3.##WILDVALUE##</userparam1>
+            <userparam2></userparam2>
+            <userparam3></userparam3>
+            <iscomposite>false</iscomposite>
+            <rpn></rpn>
+            <alertTransitionIval>0</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        <datapoint>
+            <name>bwMeetMeGroupNumPortsInUse</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam></postprocessorparam>
+            <usevalue></usevalue>
+            <alertexpr></alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject></alertsubject>
+            <alertbody></alertbody>
+            <enableanomalyalertsuppression></enableanomalyalertsuppression>
+            <description>This is the number of conferences ports that are currently in use.</description>
+            <maxvalue></maxvalue>
+            <minvalue>0</minvalue>
+            <userparam1>.1.3.6.1.4.1.6431.1.2.11.89.14.1.4.##WILDVALUE##</userparam1>
+            <userparam2></userparam2>
+            <userparam3></userparam3>
+            <iscomposite>false</iscomposite>
+            <rpn></rpn>
+            <alertTransitionIval>0</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        </datapoints>
+        <graphs>
+        <graph>
+            <name>Number of Active Conferences</name>
+            <title>Number of Active Conferences</title>
+            <verticallabel>conferences</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>2</displayprio>
+            <timescale>1week</timescale>
+            <base1024>false</base1024>
+            <graphdatapoints>
+        <graphdatapoint>
+            <name>bwMeetMeGroupNumActiveConferences_raw</name>
+            <datapointname>bwMeetMeGroupNumActiveConferences</datapointname>
+            <cf>1</cf>
+        </graphdatapoint>
+            </graphdatapoints>
+            <graphvirtualdatapoints>
+        <graphvirtualdatapoint>
+            <name>bwMeetMeGroupNumActiveConferences</name>
+            <rpn>round(bwMeetMeGroupNumActiveConferences_raw)</rpn>
+        </graphvirtualdatapoint>
+            </graphvirtualdatapoints>
+            <graphdatas>
+            <graphdata>
+                <type>2</type>
+                <legend>Number of Active Conferences for ##DSIDESCRIPTION##</legend>
+                <color>blue</color>
+                <datapointname>bwMeetMeGroupNumActiveConferences</datapointname>
+                <isvirtualdatapoint>true</isvirtualdatapoint>
+            </graphdata>
+            </graphdatas>
+        </graph>
+        <graph>
+            <name>Number of Meet-Me Ports In Use</name>
+            <title>Number of Meet-Me Ports In Use</title>
+            <verticallabel>ports</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>1</displayprio>
+            <timescale>1week</timescale>
+            <base1024>false</base1024>
+            <graphdatapoints>
+        <graphdatapoint>
+            <name>bwMeetMeGroupNumPortsInUse_raw</name>
+            <datapointname>bwMeetMeGroupNumPortsInUse</datapointname>
+            <cf>1</cf>
+        </graphdatapoint>
+            </graphdatapoints>
+            <graphvirtualdatapoints>
+        <graphvirtualdatapoint>
+            <name>bwMeetMeGroupNumPortsInUse</name>
+            <rpn>round(bwMeetMeGroupNumPortsInUse_raw)</rpn>
+        </graphvirtualdatapoint>
+            </graphvirtualdatapoints>
+            <graphdatas>
+            <graphdata>
+                <type>2</type>
+                <legend>Number of Meet-Me Ports In Use for ##DSIDESCRIPTION##</legend>
+                <color>red</color>
+                <datapointname>bwMeetMeGroupNumPortsInUse</datapointname>
+                <isvirtualdatapoint>true</isvirtualdatapoint>
+            </graphdata>
+            </graphdatas>
+        </graph>
+        </graphs>
+        <overviewgraphs>
+        <overviewgraph>
+            <name>Active Conferences</name>
+            <title>Active Conferences</title>
+            <verticallabel>conferences active</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>2</displayprio>
+            <timescale>1day</timescale>
+            <base1024>false</base1024>
+            <aggregated>true</aggregated>
+            <datapoints>
+        <overviewgraphdatapoint>
+            <name>bwMeetMeNumActiveConferences_raw</name>
+            <datapointname>bwMeetMeGroupNumActiveConferences</datapointname>
+            <cf>1</cf>
+            <aggregateMethod>sum</aggregateMethod>
+        </overviewgraphdatapoint>
+            </datapoints>
+            <virtualdatapoints>
+        <overviewgraphvirtualdatapoint>
+            <name>bwMeetMeNumActiveConferences</name>
+            <rpn>round(bwMeetMeNumActiveConferences_raw)</rpn>
+        </overviewgraphvirtualdatapoint>
+            </virtualdatapoints>
+            <lines>
+            <overviewgraphline>
+                <type>2</type>
+                <legend>Total number of active conferences</legend>
+                <datapointname>bwMeetMeNumActiveConferences</datapointname>
+                <isvirtualdatapoint>true</isvirtualdatapoint>
+                <color>green</color>
+            </overviewgraphline>
+            </lines>
+        </overviewgraph>
+        <overviewgraph>
+            <name>Top Meet-Me Ports In Use</name>
+            <title>Top Meet-Me Ports In Use</title>
+            <verticallabel>ports</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>2</displayprio>
+            <timescale>1day</timescale>
+            <base1024>false</base1024>
+            <aggregated>false</aggregated>
+            <datapoints>
+        <overviewgraphdatapoint>
+            <name>bwMeetMeGroupNumPortsInUse_raw</name>
+            <datapointname>bwMeetMeGroupNumPortsInUse</datapointname>
+            <cf>1</cf>
+            <aggregateMethod>SUM</aggregateMethod>
+        </overviewgraphdatapoint>
+            </datapoints>
+            <virtualdatapoints>
+        <overviewgraphvirtualdatapoint>
+            <name>bwMeetMeGroupNumPortsInUse</name>
+            <rpn>round(bwMeetMeGroupNumPortsInUse_raw)</rpn>
+        </overviewgraphvirtualdatapoint>
+            </virtualdatapoints>
+            <lines>
+            <overviewgraphline>
+                <type>1</type>
+                <legend>##INSTANCE## - ##DSIDESCRIPTION##</legend>
+                <datapointname>bwMeetMeGroupNumPortsInUse</datapointname>
+                <isvirtualdatapoint>true</isvirtualdatapoint>
+                <color>green</color>
+            </overviewgraphline>
+            </lines>
+        </overviewgraph>
+        <overviewgraph>
+            <name>Total Number of Meet-Me Ports In Use</name>
+            <title>Total Number of Meet-Me Ports In Use</title>
+            <verticallabel>ports</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>1</displayprio>
+            <timescale>1day</timescale>
+            <base1024>false</base1024>
+            <aggregated>true</aggregated>
+            <datapoints>
+        <overviewgraphdatapoint>
+            <name>bwMeetMeGroupNumPortsInUse_raw</name>
+            <datapointname>bwMeetMeGroupNumPortsInUse</datapointname>
+            <cf>1</cf>
+            <aggregateMethod>sum</aggregateMethod>
+        </overviewgraphdatapoint>
+            </datapoints>
+            <virtualdatapoints>
+        <overviewgraphvirtualdatapoint>
+            <name>bwMeetMeGroupNumPortsInUse</name>
+            <rpn>round(bwMeetMeGroupNumPortsInUse_raw)</rpn>
+        </overviewgraphvirtualdatapoint>
+            </virtualdatapoints>
+            <lines>
+            <overviewgraphline>
+                <type>1</type>
+                <legend>Total Ports</legend>
+                <datapointname>bwMeetMeGroupNumPortsInUse</datapointname>
+                <isvirtualdatapoint>true</isvirtualdatapoint>
+                <color>orange</color>
+            </overviewgraphline>
+            </lines>
+        </overviewgraph>
+        </overviewgraphs>
+        <scripts>
+        </scripts>
+    </entry>
+</feed>
