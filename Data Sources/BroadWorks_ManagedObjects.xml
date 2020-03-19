@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed  version="1.0" hasPendingRequests="false" >
+  <company></company>
+  <status>200</status>
+  <errmsg>OK</errmsg>
+  <interval>0</interval>
+    <entry type="predatasource">
+        <version>1584660368</version>
+        <name>BroadWorks_ManagedObjects</name>
+        <displayedas>ManagedObjects</displayedas>
+        <description></description>
+        <collector>snmp</collector>
+        <hasMultiInstances>true</hasMultiInstances>
+        <schedule>180</schedule>
+        <appliesTo>join(system.groups,&#34;,&#34;) =~ &#34;Impulse Infrastructure/Phoenix AZ/Servers/Broadworks - Production&#34; or join(system.groups,&#34;,&#34;) =~ &#34;Impulse Infrastructure/Goleta CA/GTA DataCenter/Servers/BroadWorks - Production&#34; or join(system.groups,&#34;,&#34;) =~ &#34;Impulse Infrastructure/Goleta CA/GTA DataCenter/Servers/BroadWorks - Lab&#34; or join(system.groups,&#34;,&#34;) =~ &#34;Impulse Infrastructure/Chicago IL/Servers/BroadWorks - Production&#34; or join(system.groups,&#34;,&#34;) =~ &#34;Impulse Infrastructure/Chicago IL/Servers/BroadWorks - Lab&#34;</appliesTo>
+        <wildcardauto>true</wildcardauto>
+        <wildcardpersist>false</wildcardpersist>
+        <wildcardlinuxscript>ad_snmp</wildcardlinuxscript>
+        <wildcardlinuxcmdline> type=&#34;value&#34; oid=&#34;.1.3.6.1.4.1.6431.1.1.2.4.1.1.2&#34;  descOid=&#34;&#34; oid2=&#34;&#34;  </wildcardlinuxcmdline>
+        <wildcardwinscript>ad_snmp</wildcardwinscript>
+        <wildcardwincmdline> type=&#34;value&#34; oid=&#34;.1.3.6.1.4.1.6431.1.1.2.4.1.1.2&#34;  descOid=&#34;&#34; oid2=&#34;&#34;  </wildcardwincmdline>
+        <wildcardgroovyscript></wildcardgroovyscript>
+        <wildcardschedule>60</wildcardschedule>
+        <wildcarddisable>false</wildcarddisable>
+        <wildcarddeleteinactive>false</wildcarddeleteinactive>
+        <agdmethod>none</agdmethod>
+        <agdparams></agdparams>
+        <group>ClearStar</group>
+        <tags></tags>
+        <technology></technology>
+        <adlist><![CDATA[{"agdmethod":"none","method":"ad_snmp","agdparams":"","id":0,"filters":[{"attribute":".1.3.6.1.4.1.6431.1.1.2.4.1.1.9","operation":"NotEqual","value":"0"},{"attribute":".1.3.6.1.4.1.6431.1.1.2.4.1.1.7","operation":"Equal","value":"1"}],"params":{"descOid":"","ad_param_externalresourceid":"","oid":".1.3.6.1.4.1.6431.1.1.2.4.1.1.2","ILP":"[]","oid2":"","type":"value","ad_param_externalresourcetype":""}}]]></adlist>
+        <schemaVersion>2</schemaVersion>
+        <dataSourceType>1</dataSourceType>
+        <attributes>
+        <attribute>
+            <name>ip</name>
+            <value>dns</value>
+            <comment></comment>
+        </attribute>
+        <attribute>
+            <name>__filter_0</name>
+            <value>.1.3.6.1.4.1.6431.1.1.2.4.1.1.9	NotEqual	0</value>
+            <comment>BroadworksMaintenance::bwApplicationAdministrativeState= notAvailable(0)</comment>
+        </attribute>
+        <attribute>
+            <name>__filter_1</name>
+            <value>.1.3.6.1.4.1.6431.1.1.2.4.1.1.7	Equal	1</value>
+            <comment>BroadworksMaintenance::bwApplicationStatus = active(1)</comment>
+        </attribute>
+        </attributes>
+        <datapoints>
+        <datapoint>
+            <name>isActive</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam></postprocessorparam>
+            <usevalue></usevalue>
+            <alertexpr></alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject></alertsubject>
+            <alertbody></alertbody>
+            <enableanomalyalertsuppression></enableanomalyalertsuppression>
+            <description></description>
+            <maxvalue>1</maxvalue>
+            <minvalue>0</minvalue>
+            <userparam1>.1.3.6.1.4.1.6431.1.1.2.4.1.1.7.##WILDVALUE##</userparam1>
+            <userparam2></userparam2>
+            <userparam3></userparam3>
+            <iscomposite>false</iscomposite>
+            <rpn></rpn>
+            <alertTransitionIval>0</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        <datapoint>
+            <name>isDeployed</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam></postprocessorparam>
+            <usevalue></usevalue>
+            <alertexpr></alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject></alertsubject>
+            <alertbody></alertbody>
+            <enableanomalyalertsuppression></enableanomalyalertsuppression>
+            <description></description>
+            <maxvalue>1</maxvalue>
+            <minvalue>0</minvalue>
+            <userparam1>.1.3.6.1.4.1.6431.1.1.2.4.1.1.8.##WILDVALUE##</userparam1>
+            <userparam2></userparam2>
+            <userparam3></userparam3>
+            <iscomposite>false</iscomposite>
+            <rpn></rpn>
+            <alertTransitionIval>0</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        <datapoint>
+            <name>effectiveState</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam></postprocessorparam>
+            <usevalue></usevalue>
+            <alertexpr>&#62; 6 7 9</alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject></alertsubject>
+            <alertbody></alertbody>
+            <enableanomalyalertsuppression></enableanomalyalertsuppression>
+            <description>notAvailable (0), unlocking (1), unlocked (2), locking (3), locked (4), forcedLocking (5), forcedLocked (6), inTrouble (7), stopping (8), stopped (9), dead (10)</description>
+            <maxvalue></maxvalue>
+            <minvalue></minvalue>
+            <userparam1>.1.3.6.1.4.1.6431.1.1.2.4.1.1.10.##WILDVALUE##</userparam1>
+            <userparam2></userparam2>
+            <userparam3></userparam3>
+            <iscomposite>false</iscomposite>
+            <rpn></rpn>
+            <alertTransitionIval>0</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        <datapoint>
+            <name>adminState</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam></postprocessorparam>
+            <usevalue></usevalue>
+            <alertexpr>&#62; 1 2 2</alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject></alertsubject>
+            <alertbody></alertbody>
+            <enableanomalyalertsuppression></enableanomalyalertsuppression>
+            <description>notAvailable (0),unlock (1), lock (2), forceLock (3)</description>
+            <maxvalue>3</maxvalue>
+            <minvalue>0</minvalue>
+            <userparam1>.1.3.6.1.4.1.6431.1.1.2.4.1.1.9.##WILDVALUE##</userparam1>
+            <userparam2></userparam2>
+            <userparam3></userparam3>
+            <iscomposite>false</iscomposite>
+            <rpn></rpn>
+            <alertTransitionIval>0</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        </datapoints>
+        <graphs>
+        <graph>
+            <name>Admin State</name>
+            <title>Admin State</title>
+            <verticallabel>State</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>3.0</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>1</displayprio>
+            <timescale>1day</timescale>
+            <base1024>false</base1024>
+            <graphdatapoints>
+        <graphdatapoint>
+            <name>adminState</name>
+            <datapointname>adminState</datapointname>
+            <cf>1</cf>
+        </graphdatapoint>
+            </graphdatapoints>
+            <graphvirtualdatapoints>
+            </graphvirtualdatapoints>
+            <graphdatas>
+            <graphdata>
+                <type>1</type>
+                <legend>notAvailable (0),unlock (1), lock (2), forceLock (3)</legend>
+                <color>silver</color>
+                <datapointname>adminState</datapointname>
+                <isvirtualdatapoint>false</isvirtualdatapoint>
+            </graphdata>
+            </graphdatas>
+        </graph>
+        <graph>
+            <name>Effective State</name>
+            <title>Effective State</title>
+            <verticallabel>State</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>10.0</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>1</displayprio>
+            <timescale>1day</timescale>
+            <base1024>false</base1024>
+            <graphdatapoints>
+        <graphdatapoint>
+            <name>effectiveState</name>
+            <datapointname>effectiveState</datapointname>
+            <cf>1</cf>
+        </graphdatapoint>
+            </graphdatapoints>
+            <graphvirtualdatapoints>
+            </graphvirtualdatapoints>
+            <graphdatas>
+            <graphdata>
+                <type>1</type>
+                <legend>notAvailable (0), unlocking (1), unlocked (2), locking (3), locked (4), forcedLocking (5), forcedLocked (6), inTrouble (7), stopping (8), stopped (9), dead (10)</legend>
+                <color>silver</color>
+                <datapointname>effectiveState</datapointname>
+                <isvirtualdatapoint>false</isvirtualdatapoint>
+            </graphdata>
+            </graphdatas>
+        </graph>
+        </graphs>
+        <overviewgraphs>
+        <overviewgraph>
+            <name>Admin State</name>
+            <title>Admin State</title>
+            <verticallabel>State</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>3.0</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>1</displayprio>
+            <timescale>1hour</timescale>
+            <base1024>false</base1024>
+            <aggregated>false</aggregated>
+            <datapoints>
+        <overviewgraphdatapoint>
+            <name>adminState</name>
+            <datapointname>adminState</datapointname>
+            <cf>1</cf>
+            <aggregateMethod>sum</aggregateMethod>
+        </overviewgraphdatapoint>
+            </datapoints>
+            <virtualdatapoints>
+            </virtualdatapoints>
+            <lines>
+            <overviewgraphline>
+                <type>1</type>
+                <legend>##DSIDESCRIPTION## - ##INSTANCE##</legend>
+                <datapointname>adminState</datapointname>
+                <isvirtualdatapoint>false</isvirtualdatapoint>
+                <color>silver</color>
+            </overviewgraphline>
+            </lines>
+        </overviewgraph>
+        <overviewgraph>
+            <name>Effective State</name>
+            <title>Effective State</title>
+            <verticallabel>States</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>NaN</minvalue>
+            <displayprio>1</displayprio>
+            <timescale>1hour</timescale>
+            <base1024>false</base1024>
+            <aggregated>false</aggregated>
+            <datapoints>
+        <overviewgraphdatapoint>
+            <name>effectiveState</name>
+            <datapointname>effectiveState</datapointname>
+            <cf>1</cf>
+            <aggregateMethod>sum</aggregateMethod>
+        </overviewgraphdatapoint>
+            </datapoints>
+            <virtualdatapoints>
+            </virtualdatapoints>
+            <lines>
+            <overviewgraphline>
+                <type>1</type>
+                <legend>##DSIDESCRIPTION## - ##INSTANCE##</legend>
+                <datapointname>effectiveState</datapointname>
+                <isvirtualdatapoint>false</isvirtualdatapoint>
+                <color>silver</color>
+            </overviewgraphline>
+            </lines>
+        </overviewgraph>
+        </overviewgraphs>
+        <scripts>
+        </scripts>
+    </entry>
+</feed>
