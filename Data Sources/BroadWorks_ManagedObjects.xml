@@ -5,10 +5,10 @@
   <errmsg>OK</errmsg>
   <interval>0</interval>
     <entry type="predatasource">
-        <version>1584660368</version>
+        <version>1584661910</version>
         <name>BroadWorks_ManagedObjects</name>
         <displayedas>ManagedObjects</displayedas>
-        <description></description>
+        <description>Identifies BroadWorks Applications that have been activated, and monitors their administrative and effective state.</description>
         <collector>snmp</collector>
         <hasMultiInstances>true</hasMultiInstances>
         <schedule>180</schedule>
@@ -25,7 +25,7 @@
         <wildcarddeleteinactive>false</wildcarddeleteinactive>
         <agdmethod>none</agdmethod>
         <agdparams></agdparams>
-        <group>ClearStar</group>
+        <group></group>
         <tags></tags>
         <technology></technology>
         <adlist><![CDATA[{"agdmethod":"none","method":"ad_snmp","agdparams":"","id":0,"filters":[{"attribute":".1.3.6.1.4.1.6431.1.1.2.4.1.1.9","operation":"NotEqual","value":"0"},{"attribute":".1.3.6.1.4.1.6431.1.1.2.4.1.1.7","operation":"Equal","value":"1"}],"params":{"descOid":"","ad_param_externalresourceid":"","oid":".1.3.6.1.4.1.6431.1.1.2.4.1.1.2","ILP":"[]","oid2":"","type":"value","ad_param_externalresourcetype":""}}]]></adlist>
@@ -102,7 +102,7 @@
             <postprocessormethod>none</postprocessormethod>
             <postprocessorparam></postprocessorparam>
             <usevalue></usevalue>
-            <alertexpr>&#62; 6 7 9</alertexpr>
+            <alertexpr></alertexpr>
             <alertmissing>1</alertmissing>
             <alertsubject></alertsubject>
             <alertbody></alertbody>
@@ -125,7 +125,7 @@
             <postprocessormethod>none</postprocessormethod>
             <postprocessorparam></postprocessorparam>
             <usevalue></usevalue>
-            <alertexpr>&#62; 1 2 2</alertexpr>
+            <alertexpr></alertexpr>
             <alertmissing>1</alertmissing>
             <alertsubject></alertsubject>
             <alertbody></alertbody>
