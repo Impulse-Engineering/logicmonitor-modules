@@ -5,15 +5,16 @@
   <errmsg>OK</errmsg>
   <interval>0</interval>
     <entry type="preeventsource">
-        <version>1579639762</version>
+        <version>1585230423</version>
         <name>bwRedundancyLinkFailure</name>
         <description>The redundancy link with the peer Application Server is down</description>
         <group>ClearStar</group>
         <alertlevel>4</alertlevel>
-        <appliesto>system.displayname == &#34;LABAS1&#34; or system.displayname == &#34;LABAS2&#34; or system.displayname == &#34;AS1&#34; or system.displayname == &#34;AS2&#34;</appliesto>
+        <appliesto>BroadWorksNodes()</appliesto>
         <collector>snmptrap</collector>
         <alertsubjecttemplate>AS redundancy link is down</alertsubjecttemplate>
-        <alertbodytemplate>The redundancy link with the peer Application Server is down</alertbodytemplate>
+        <alertbodytemplate>@severity:high
+@subcomponent:callp</alertbodytemplate>
         <alerteffectiveival>900</alerteffectiveival>
         <clearafterack>false</clearafterack>
         <suppressduplicates>true</suppressduplicates>
