@@ -8,7 +8,7 @@
         <version>1585230423</version>
         <name>bwRedundancyLinkFailure</name>
         <description>The redundancy link with the peer Application Server is down</description>
-        <group>ClearStar</group>
+        <group></group>
         <alertlevel>4</alertlevel>
         <appliesto>BroadWorksNodes()</appliesto>
         <collector>snmptrap</collector>

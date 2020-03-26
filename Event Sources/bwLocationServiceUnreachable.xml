@@ -8,7 +8,7 @@
         <version>1585230393</version>
         <name>bwLocationServiceUnreachable</name>
         <description>The (BroadWorks Network Server) Location Service is unreachable.</description>
-        <group>ClearStar</group>
+        <group></group>
         <alertlevel>4</alertlevel>
         <appliesto>BroadWorksNodes()</appliesto>
         <collector>snmptrap</collector>

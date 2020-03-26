@@ -8,7 +8,7 @@
         <version>1585230434</version>
         <name>bwSipPeerConnectionFailure</name>
         <description>The SIP connection with the peer Application Server is down</description>
-        <group>ClearStar</group>
+        <group></group>
         <alertlevel>4</alertlevel>
         <appliesto>BroadWorksNodes()</appliesto>
         <collector>snmptrap</collector>

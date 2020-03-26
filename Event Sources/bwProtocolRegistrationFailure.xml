@@ -8,7 +8,7 @@
         <version>1585230401</version>
         <name>bwProtocolRegistrationFailure</name>
         <description>Failed to register protocol with Application Server.</description>
-        <group>ClearStar</group>
+        <group></group>
         <alertlevel>4</alertlevel>
         <appliesto>BroadWorksNodes()</appliesto>
         <collector>snmptrap</collector>
