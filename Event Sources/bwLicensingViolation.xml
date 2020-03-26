@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed  version="1.0" hasPendingRequests="false" >
+  <company></company>
+  <status>200</status>
+  <errmsg>OK</errmsg>
+  <interval>0</interval>
+    <entry type="preeventsource">
+        <version>1585230906</version>
+        <name>bwLicensingViolation</name>
+        <description>There is a license usage violation.</description>
+        <group></group>
+        <alertlevel>4</alertlevel>
+        <appliesto>BroadWorksNodes()</appliesto>
+        <collector>snmptrap</collector>
+        <alertsubjecttemplate></alertsubjecttemplate>
+        <alertbodytemplate>@severity:high
+@subcomponent:licensing</alertbodytemplate>
+        <alerteffectiveival>600</alerteffectiveival>
+        <clearafterack>false</clearafterack>
+        <suppressduplicates>true</suppressduplicates>
+        <tags></tags>
+        <technology>BW-LicenseManagerFault::bwLicensingViolation</technology>
+        <doMapping>true</doMapping>
+        <schemaVersion>3</schemaVersion>
+        <params>
+        </params>
+        <filters>
+        <preeventsourcefilter>
+            <name>trapOid</name>
+            <value>1.3.6.1.4.1.6431.1.1.1.15808</value>
+            <comment>bwLicensingViolation</comment>
+            <op>Equal</op>
+        </preeventsourcefilter>
+        </filters>
+        <scripts>
+        </scripts>
+    </entry>
+</feed>
