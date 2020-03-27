@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed  version="1.0" hasPendingRequests="false" >
+  <company></company>
+  <status>200</status>
+  <errmsg>OK</errmsg>
+  <interval>0</interval>
+    <entry type="predatasource">
+        <version>1585330244</version>
+        <name>DNS_ResolveAddress</name>
+        <displayedas>DNS Queries-</displayedas>
+        <description>Check if your hostnames resolve using your DNS servers.
+
+Assumes:
+* LM Resource is a DNS server responding on port 53
+* LM Collector has ACL permission to query LM Resource DNS Service</description>
+        <collector>script</collector>
+        <hasMultiInstances>true</hasMultiInstances>
+        <schedule>180</schedule>
+        <appliesTo>system.displayname == &#34;ns4.impulsevoip-dns&#34; or system.displayname == &#34;ns3.impulsevoip-dns&#34; or system.displayname == &#34;ns2.impulsevoip-dns&#34; or system.displayname == &#34;ns1.impulsevoip-dns&#34;</appliesTo>
+        <wildcardauto>false</wildcardauto>
+        <wildcardpersist>false</wildcardpersist>
+        <wildcardlinuxscript></wildcardlinuxscript>
+        <wildcardlinuxcmdline></wildcardlinuxcmdline>
+        <wildcardwinscript></wildcardwinscript>
+        <wildcardwincmdline></wildcardwincmdline>
+        <wildcardgroovyscript></wildcardgroovyscript>
+        <wildcardschedule>1440</wildcardschedule>
+        <wildcarddisable>false</wildcarddisable>
+        <wildcarddeleteinactive>false</wildcarddeleteinactive>
+        <agdmethod>none</agdmethod>
+        <agdparams></agdparams>
+        <group>DNS Service</group>
+        <tags></tags>
+        <technology>Directions To Use:
+* You must manually create the Monitored Instances off the LM Resource
+* Optional - Specify the DNS Query Type To Resolve (Defaults to &#34;A&#34;)
+  * Instance is created go to Info tab -&#62; gearbox/settings -&#62; properties
+  * Property Name: queryType
+  * Property Value (see below)
+   - A
+   - AAAA
+   - MX
+   - SRV
+   - NAPTR
+   - PTR
+   - SSHFP
+   - NS
+   - DNSKEY
+   - TXT</technology>
+        <adlist><![CDATA[{"agdmethod":"none","agdparams":"","id":0,"filters":[],"params":{}}]]></adlist>
+        <schemaVersion>2</schemaVersion>
+        <dataSourceType>1</dataSourceType>
+        <attributes>
+        <attribute>
+            <name>scripttype</name>
+            <value>embed</value>
+            <comment></comment>
+        </attribute>
+        <attribute>
+            <name>scriptgroovy</name>
+            <value>import groovy.time.TimeCategory;
+import groovy.time.TimeDuration;
+import org.xbill.DNS.*;
+
+
+// This script will return true if it is able to resolve the requested
+// address.
+// - ResolveAddress.groovy
+
+// Vars
+  String wildvalue = &#34;##WILDVALUE##&#34;;
+  String dnsresolver = hostProps.get(&#34;system.hostname&#34;);
+  String tmp_addrType = instanceProps.get(&#34;queryType&#34;)
+
+
+
+  switch (tmp_addrType) {
+      case ~/^MX$/:
+          addrType = Type.MX
+          break
+      case ~/^PTR$/:
+          addrType = Type.PTR
+          break
+      case ~/^AAAA$/:
+          addrType = Type.AAAA
+          break
+      case ~/^CNAME$/:
+          addrType = Type.CNAME
+          break
+      case ~/^DNSKEY$/:
+          addrType = Type.DNSKEY
+          break
+      case ~/^NAPTR$/:
+          addrType = Type.NAPTR
+          break
+      case ~/^NS$/:
+          addrType = Type.NS
+          break
+      case ~/^SOA$/:
+          addrType = Type.SOA
+          break
+      case ~/^SRV$/:
+          addrType = Type.SRV
+          break
+      case ~/^SSHFP$/:
+          addrType = Type.SSHFP
+          break
+      case ~/^TXT$/:
+          addrType = Type.TXT
+          break
+      case ~/^A$/:
+          addrType = Type.A
+          break
+      default:
+          addrType = Type.A;
+          break
+  }
+
+
+
+
+
+// Create resolver instance
+  Lookup lookup = new Lookup(wildvalue, addrType);
+  SimpleResolver resolver = new SimpleResolver(dnsresolver);
+  lookup.setResolver(resolver);
+  resolver.setTimeout(30);
+
+// Let&#39;s record duration for PM
+  def beforeRun = new Date()
+
+//Execute Query
+  Record[] result = lookup.run();
+  def afterRun = new Date()
+  duration = TimeCategory.minus( afterRun, beforeRun ).getMillis()
+
+
+// Check if we have results
+if (result == null || result.length == 0) {
+    println &#34;DNS Failure&#34;
+    println result;
+    return(1);
+    }
+
+println &#34;duration=${duration}&#34;
+println &#34;queryType=${tmp_addrType}&#34;
+
+result.each() 
+{ address -&#62;
+    println address;
+}
+
+return(0)</value>
+            <comment></comment>
+        </attribute>
+        <attribute>
+            <name>windowsscript</name>
+            <value></value>
+            <comment></comment>
+        </attribute>
+        <attribute>
+            <name>linuxscript</name>
+            <value></value>
+            <comment></comment>
+        </attribute>
+        <attribute>
+            <name>windowscmdline</name>
+            <value></value>
+            <comment></comment>
+        </attribute>
+        <attribute>
+            <name>linuxcmdline</name>
+            <value></value>
+            <comment></comment>
+        </attribute>
+        </attributes>
+        <datapoints>
+        <datapoint>
+            <name>response</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>namevalue</postprocessormethod>
+            <postprocessorparam>duration</postprocessorparam>
+            <usevalue>output</usevalue>
+            <alertexpr></alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject></alertsubject>
+            <alertbody></alertbody>
+            <enableanomalyalertsuppression></enableanomalyalertsuppression>
+            <description></description>
+            <maxvalue></maxvalue>
+            <minvalue>0</minvalue>
+            <userparam1></userparam1>
+            <userparam2></userparam2>
+            <userparam3></userparam3>
+            <iscomposite>false</iscomposite>
+            <rpn></rpn>
+            <alertTransitionIval>0</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        <datapoint>
+            <name>status</name>
+            <dataType>4</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam></postprocessorparam>
+            <usevalue>exitCode</usevalue>
+            <alertexpr></alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject></alertsubject>
+            <alertbody></alertbody>
+            <enableanomalyalertsuppression></enableanomalyalertsuppression>
+            <description></description>
+            <maxvalue></maxvalue>
+            <minvalue></minvalue>
+            <userparam1></userparam1>
+            <userparam2></userparam2>
+            <userparam3></userparam3>
+            <iscomposite>false</iscomposite>
+            <rpn></rpn>
+            <alertTransitionIval>0</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        </datapoints>
+        <graphs>
+        <graph>
+            <name>Response Time</name>
+            <title>Response Time</title>
+            <verticallabel>ms</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>1</displayprio>
+            <timescale>1day</timescale>
+            <base1024>false</base1024>
+            <graphdatapoints>
+        <graphdatapoint>
+            <name>response</name>
+            <datapointname>response</datapointname>
+            <cf>1</cf>
+        </graphdatapoint>
+            </graphdatapoints>
+            <graphvirtualdatapoints>
+            </graphvirtualdatapoints>
+            <graphdatas>
+            <graphdata>
+                <type>1</type>
+                <legend>Query Response Time (ms)</legend>
+                <color>silver</color>
+                <datapointname>response</datapointname>
+                <isvirtualdatapoint>false</isvirtualdatapoint>
+            </graphdata>
+            </graphdatas>
+        </graph>
+        <graph>
+            <name>Status</name>
+            <title>Status</title>
+            <verticallabel>status</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>NaN</minvalue>
+            <displayprio>2</displayprio>
+            <timescale>1day</timescale>
+            <base1024>false</base1024>
+            <graphdatapoints>
+        <graphdatapoint>
+            <name>status</name>
+            <datapointname>status</datapointname>
+            <cf>1</cf>
+        </graphdatapoint>
+            </graphdatapoints>
+            <graphvirtualdatapoints>
+            </graphvirtualdatapoints>
+            <graphdatas>
+            <graphdata>
+                <type>1</type>
+                <legend>Query Status</legend>
+                <color>silver</color>
+                <datapointname>status</datapointname>
+                <isvirtualdatapoint>false</isvirtualdatapoint>
+            </graphdata>
+            </graphdatas>
+        </graph>
+        </graphs>
+        <overviewgraphs>
+        <overviewgraph>
+            <name>Query Response Times</name>
+            <title>Query Response Times</title>
+            <verticallabel>ms</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>1</displayprio>
+            <timescale>1day</timescale>
+            <base1024>false</base1024>
+            <aggregated>false</aggregated>
+            <datapoints>
+        <overviewgraphdatapoint>
+            <name>response</name>
+            <datapointname>response</datapointname>
+            <cf>1</cf>
+            <aggregateMethod>sum</aggregateMethod>
+        </overviewgraphdatapoint>
+            </datapoints>
+            <virtualdatapoints>
+            </virtualdatapoints>
+            <lines>
+            <overviewgraphline>
+                <type>1</type>
+                <legend>##DSIDESCRIPTION## - ##INSTANCE##</legend>
+                <datapointname>response</datapointname>
+                <isvirtualdatapoint>false</isvirtualdatapoint>
+                <color>silver</color>
+            </overviewgraphline>
+            </lines>
+        </overviewgraph>
+        <overviewgraph>
+            <name>Query Status</name>
+            <title>Query Status</title>
+            <verticallabel>status</verticallabel>
+            <rigid>false</rigid>
+            <maxvalue>NaN</maxvalue>
+            <minvalue>0.0</minvalue>
+            <displayprio>2</displayprio>
+            <timescale>1day</timescale>
+            <base1024>false</base1024>
+            <aggregated>false</aggregated>
+            <datapoints>
+        <overviewgraphdatapoint>
+            <name>status</name>
+            <datapointname>status</datapointname>
+            <cf>1</cf>
+            <aggregateMethod>sum</aggregateMethod>
+        </overviewgraphdatapoint>
+            </datapoints>
+            <virtualdatapoints>
+            </virtualdatapoints>
+            <lines>
+            <overviewgraphline>
+                <type>1</type>
+                <legend>##DSIDESCRIPTION## - ##INSTANCE##</legend>
+                <datapointname>status</datapointname>
+                <isvirtualdatapoint>false</isvirtualdatapoint>
+                <color>silver</color>
+            </overviewgraphline>
+            </lines>
+        </overviewgraph>
+        </overviewgraphs>
+        <scripts>
+        </scripts>
+    </entry>
+</feed>
