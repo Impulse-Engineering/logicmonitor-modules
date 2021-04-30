@@ -124,6 +124,7 @@ import org.xbill.DNS.*;
   Lookup lookup = new Lookup(wildvalue, addrType);
   SimpleResolver resolver = new SimpleResolver(dnsresolver);
   lookup.setResolver(resolver);
+  lookup.setCache(null);
   resolver.setTimeout(30);
 
 // Let&#39;s record duration for PM
